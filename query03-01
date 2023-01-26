@@ -1,0 +1,119 @@
+-- Оператор INSERT
+
+-- Добавление записи в таблицу Sports (пример однострочного комментария)
+INSERT INTO Sports (SportId, Title)
+VALUES ('5', 'Футбол');  -- запись содержит два атрибута
+
+/* Добавление записи в таблицу Trainers
+пример многострочного комментария */
+INSERT INTO Trainers (TrainerId, LastName, FirstName,
+    MiddleName, Salary, SocialSecurityNumber)
+VALUES ('7', 'Яськова', 'Елена',
+    'Владимировна', '25000', '463-436-384 46');
+    
+INSERT INTO Trainings (TrainingId, TrainerId, SportId, HallId,
+    WeekDay, BeginTime, EndTime)
+VALUES ('3', '7', '5', '2',
+    'Среда', '8:15', '9:45');
+    
+/*********************************
+**  Наглядный пример того, как  **
+**  не стоит использовать       **
+**  комментарии                 **
+*********************************/
+
+
+-- Оператор UPDATE
+INSERT INTO Sports (SportId, Title)
+VALUES ('6', 'Теннис');
+
+UPDATE Sports
+SET Title = 'Большой теннис'
+WHERE SportId = 6;
+
+-- Обновление нескольких полей в таблице
+UPDATE Trainers
+SET LastName = 'Фамилия', FirstName = 'Имя', MiddleName = 'Отчество'
+WHERE TrainerId = 7;
+
+-- Обновление нескольких записей в таблице
+UPDATE Trainers
+SET Salary = 30000
+WHERE TrainerId BETWEEN 3 AND 5;
+
+
+-- Оператор DELETE (подготовка к демонстрации)
+INSERT INTO Sports (SportId, Title)
+VALUES ('7', 'Художественная гимнастика');
+
+INSERT INTO Sports (SportId, Title)
+VALUES ('8', 'Легкая атлетика');
+
+INSERT INTO Sports (SportId, Title)
+VALUES ('9', 'Тяжелая атлетика');
+
+INSERT INTO Sports (SportId, Title)
+VALUES ('10', 'плавание');
+
+INSERT INTO Sports (SportId, Title)
+VALUES ('11', 'Плавание');
+
+-- Удаление записи по значению первичного ключа
+DELETE FROM Sports
+WHERE SportId = 7;
+
+-- Удаление записи с одним неизвестным числом или символом
+DELETE FROM Sports
+WHERE Title LIKE '_лавание';
+
+-- Удаление записи с несколькими неизвестными числами или символами
+DELETE FROM Sports
+WHERE Title LIKE '%атлетика';
+
+
+-- Примеры ненужных комментариев
+
+-- Добавление данных в таблицу Sports
+INSERT INTO Sports (SportId, Title)
+VALUES ('7', 'Художественная гимнастика');
+
+-- Переименование художественной гимнастики в акробатику
+UPDATE Sports
+SET Title = 'Акробатика'
+WHERE Title = 'Художественная гимнастика';
+
+-- Удаление ненужной записи
+DELETE FROM Sports
+WHERE Title = 'Акробатика';
+
+
+-- Используйте обновление и удаление данных с осторожностью
+INSERT INTO Genders (GenderId, Title)
+VALUES ('1', 'мужской');
+
+INSERT INTO Genders (GenderId, Title)
+VALUES ('2', 'женский');
+
+INSERT INTO Genders (GenderId, Title)
+VALUES ('3', 'Н/Д');
+
+
+UPDATE Genders
+SET Title = 'N/A';
+
+DELETE FROM Genders;
+
+
+-- Демонстрация ограничений внешнего ключа
+
+-- ON UPDATE CASCADE
+UPDATE Genders
+SET GenderId = 4
+WHERE GenderId = 1;
+
+-- ON DELETE RESTRICT
+DELETE FROM Genders
+WHERE GenderId = 4;
+
+
+

@@ -1,0 +1,15 @@
+
+
+CREATE TABLE SportTypes (
+    SportTypeId INTEGER       PRIMARY KEY
+                              NOT NULL,
+    Title       NVARCHAR (80) NOT NULL
+);
+
+CREATE TABLE Trainers (
+	TrainerId	INTEGER		  PRIMARY KEY
+							  NOT NULL,
+	LastName	NVARCHAR (20) NOT NULL,
+	FirstName	NVARCHAR (20) NOT NULL,
+	MiddleName	NVARCHAR (20) NOT NULL
+);	
